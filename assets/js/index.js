@@ -72,10 +72,11 @@ function renderTasks() {
             <td>${priorityBadge}</td>
             <td>${task.completed ? 'Sí' : 'No'}</td>
             <td class="d-flex">
+            <div class="dropdown">
                 <button class="btn btn-primary" onclick="editTask(${index})">Editar <i class="bi bi-pencil-fill"></i></button>
-                <div class="dropdown">
                 <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false"></button>
                     <ul class="dropdown-menu dropdown-menu-end">
+                        <li><button class="btn" onclick="viewTask(${index})">Ver Tarea <i class="bi bi-eye"></i></button></li>
                         <li><button class="btn" onclick="toggleComplete(${index})">${task.completed ? 'No completada' : 'Completa <i class="bi bi-bookmark-check"></i>'}</button></li>
                         <li><hr class="dropdown-divider"></li>
                         <li><button class="btn" onclick="deleteTask(${index})">Eliminar <i class="bi bi-trash3"></i></button></li>
@@ -115,6 +116,16 @@ function editTask(index) {
     editIndex = index;
     const taskModal = new bootstrap.Modal(document.getElementById('taskModal'));
     taskModal.show();
+}
+
+function viewTask(index) {
+    const task = tasks[index];
+    document.getElementById('viewTitle').textContent = task.title;
+    document.getElementById('viewDescription').textContent = task.description;
+    document.getElementById('viewDueDate').textContent = task.dueDate;
+    document.getElementById('viewPriority').textContent = task.priority;
+    const viewModal = new bootstrap.Modal(document.getElementById('viewModal'));
+    viewModal.show();
 }
 
 function deleteTask(index) {
