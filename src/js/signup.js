@@ -8,12 +8,26 @@ signupform.addEventListener('submit', (e) => {
     const Users = JSON.parse(localStorage.getItem('users')) || [];
     const IsUserExist = Users.find(user => user.email === email);
     if (IsUserExist) { 
-        return alert('El usuario ya existe');
+        showAlert('El usuario ya existe', 'danger');
+        return;
     }
     
     Users.push({ name: name, email: email, password: password });
     localStorage.setItem('users', JSON.stringify(Users));
-    alert('Usuario creado correctamente!');
-
-    console.log(Users);
+    showAlert('Usuario creado correctamente!', 'success');
+    setTimeout(() => {
+        window.location.href = 'login.html';
+    }, 2000);
 });
+
+function showAlert(message, type) {
+    const alertPlaceholder = document.getElementById('alertPlaceholder');
+    const wrapper = document.createElement('div');
+    wrapper.innerHTML = `
+        <div class="alert alert-${type} alert-dismissible" role="alert">
+            ${message}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    `;
+    alertPlaceholder.append(wrapper);
+}
