@@ -1,5 +1,7 @@
 # CRUD de Tareas con JavaScript
 
+![ja](https://github.com/user-attachments/assets/eb1d1f3c-72c8-49de-aecb-f98aa0515bfc)
+
 Este proyecto es una aplicación web para gestionar tareas, donde los usuarios pueden registrarse, iniciar sesión y crear, editar, ver y eliminar tareas. La aplicación utiliza LocalStorage para almacenar los datos de los usuarios y las tareas.
 
 ## Características
@@ -49,6 +51,7 @@ crud-js/
 ├── login.html
 ├── signup.html
 └── README.md
+```
 
 ## Contribución
 
